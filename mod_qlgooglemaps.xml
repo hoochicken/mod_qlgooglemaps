@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
 	type="module"
-	version="3.x"
 	client="site"
 	method="upgrade">
 	<name>qlgooglemaps</name>
@@ -41,12 +40,46 @@
 		<fields name="params" addfieldpath="/modules/mod_qlgooglemaps/php/fields" addrulepath="/modules/mod_qlgooglemaps/php/rules">
             <fieldset name="basic">
 				<field
-						name="mapurl"
+						name="url"
 						type="textarea"
-						label="MOD_QLGOOGLEMAPS_MAPURL_LABEL"
-						description="MOD_QLGOOGLEMAPS_MAPURL_DESC" />
+						label="MOD_QLGOOGLEMAPS_URL_LABEL"
+						description="MOD_QLGOOGLEMAPS_URL_DESC"
+				/>
+				<field
+						name="dsgvo"
+						type="radio"
+						class="btn-group btn-group-yesno"
+						label="MOD_QLGOOGLEMAPS_DSGVO_LABEL"
+						description="MOD_QLGOOGLEMAPS_DSGVO_DESC"
+						default="1">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field
+						name="info"
+						type="editor"
+						label="MOD_QLGOOGLEMAPS_INFO_LABEL"
+						description="MOD_QLGOOGLEMAPS_INFO_DESC"
+				/>
+				<field
+						name="eprivacylabel"
+						type="text"
+						label="MOD_QLGOOGLEMAPS_EPRIVACYLABEL_LABEL"
+						description="MOD_QLGOOGLEMAPS_LINK_EPRIVACYLABEL_DESC"
+				/>
+				<field
+						name="eprivacylink"
+						type="menuitem"
+						label="MOD_QLGOOGLEMAPS_EPRIVACYLINK_LABEL"
+						description="MOD_QLGOOGLEMAPS_EPRIVACYLINK_DESC"
+				/>
+				<field
+						name="buttonlabel"
+						type="text"
+						label="MOD_QLGOOGLEMAPS_BUTTONLABEL_LABEL"
+						description="MOD_QLGOOGLEMAPS_BUTTONLABEL_DESC"
+				/>
             </fieldset>
-
 			<fieldset
 				name="advanced">
 				<field

@@ -15,4 +15,7 @@ defined('_JEXEC') or die;
 require_once dirname(__FILE__) . '/helper.php';
 $obj_helper = new modQlgooglemapsHelper($module, $params);
 
+$menuItem = $params->get('eprivacylink', 1);
+$eprivacylinkRouted = JRoute::_('index.php?Itemid=' . $menuItem);
+
 require JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default'));

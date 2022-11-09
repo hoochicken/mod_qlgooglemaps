@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 class modQlgooglemapsHelper
 {
     public $params;
+    public $module;
 
 	function __construct($module,$params)
     {
