@@ -10,12 +10,39 @@
 defined('_JEXEC') or die;
 
 /** @var $params JRegistry */
-/** @var $module stdClass */
+$url = $params->get('url', '');
+// if no url given, wie won't display anything :-)
+if (empty($url)) return;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\WebAsset\WebAssetManager;
+
+/** @var $module stdClass */
 require_once dirname(__FILE__) . '/helper.php';
 $obj_helper = new modQlgooglemapsHelper($module, $params);
 
-$menuItem = $params->get('eprivacylink', 1);
-$eprivacylinkRouted = JRoute::_('index.php?Itemid=' . $menuItem);
+$confirmtext = $params->get('one_confirmtext', '');
+$eprivacyItemId = $params->get('eprivacyItemId', false);
+$eprivacylinkRoute = JRoute::_('index.php?Itemid=' . $eprivacyItemId);
+
+$clicksolution = $params->get('clicksolution', 0);
+$confirmtext = $params->get('confirmtext', '');
+
+$eprivacyReadText = $params->get('eprivacyReadText', '');
+$eprivacyReadTextDisplay = !empty(strip_tags($eprivacyReadText));
+$infotext = $params->get('info', '');
+$infotextDisplay = !empty(strip_tags($infotext));
+
+
+
+$unique = uniqid();
+$unique_key = 'qlgooglemaps_' . $unique;
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+// $wa->addInlineScript(sprintf('<script>let mapId = "%s"; let uniquefier = "%s"; let url = "%s"; let confirmtext = "%s"; </script>', $unique_key, $unique, $url, $confirmtext));
+$wa->registerStyle('mod_qlgooglemaps', 'mod_qlgooglemaps/styles.css');
+$wa->useStyle('mod_qlgooglemaps');
+$wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');
+$wa->useScript('mod_qlgooglemaps');
 
 require JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default'));

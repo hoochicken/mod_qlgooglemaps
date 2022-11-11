@@ -46,38 +46,70 @@
 						description="MOD_QLGOOGLEMAPS_URL_DESC"
 				/>
 				<field
-						name="dsgvo"
+						name="clicksolution"
+						type="list"
+						label="MOD_QLGOOGLEMAPS_CLICKSOLUTION_LABEL"
+						description="MOD_QLGOOGLEMAPS_CLICKSOLUTION_DESC"
+						default="0">
+					<option value="0">MOD_QLGOOGLEMAPS_ZERO</option>
+					<option value="1">MOD_QLGOOGLEMAPS_ONE</option>
+					<option value="2">MOD_QLGOOGLEMAPS_TWO</option>
+					<option value="3">MOD_QLGOOGLEMAPS_THREE</option>
+					<option value="100">MOD_QLGOOGLEMAPS_PITA</option>
+				</field>
+				<field
+						name="eprivacybutton"
 						type="radio"
 						class="btn-group btn-group-yesno"
-						label="MOD_QLGOOGLEMAPS_DSGVO_LABEL"
-						description="MOD_QLGOOGLEMAPS_DSGVO_DESC"
+						label="MOD_QLGOOGLEMAPS_EPRIVACYBUTTON_LABEL"
+						description="MOD_QLGOOGLEMAPS_EPRIVACYBUTTON_DESC"
 						default="1">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
 				<field
-						name="info"
-						type="editor"
-						label="MOD_QLGOOGLEMAPS_INFO_LABEL"
-						description="MOD_QLGOOGLEMAPS_INFO_DESC"
-				/>
-				<field
-						name="eprivacylabel"
+						name="eprivacybuttonlabel"
 						type="text"
-						label="MOD_QLGOOGLEMAPS_EPRIVACYLABEL_LABEL"
-						description="MOD_QLGOOGLEMAPS_LINK_EPRIVACYLABEL_DESC"
+						label="MOD_QLGOOGLEMAPS_EPRIVACYBUTTONLABEL_LABEL"
+						description="MOD_QLGOOGLEMAPS_EPRIVACYBUTTONLABEL_DESC"
 				/>
 				<field
-						name="eprivacylink"
+						name="eprivacyItemId"
 						type="menuitem"
 						label="MOD_QLGOOGLEMAPS_EPRIVACYLINK_LABEL"
 						description="MOD_QLGOOGLEMAPS_EPRIVACYLINK_DESC"
 				/>
 				<field
-						name="buttonlabel"
+						name="info"
+						type="editor"
+						filter="safehtml"
+						label="MOD_QLGOOGLEMAPS_INFO_LABEL"
+						description="MOD_QLGOOGLEMAPS_INFO_DESC"
+				/>
+            </fieldset>
+			<fieldset name="one">
+				<field
+						name="one_mapbuttonlabel"
 						type="text"
-						label="MOD_QLGOOGLEMAPS_BUTTONLABEL_LABEL"
-						description="MOD_QLGOOGLEMAPS_BUTTONLABEL_DESC"
+						label="MOD_QLGOOGLEMAPS_MAPBUTTONLABEL_LABEL"
+						description="MOD_QLGOOGLEMAPS_MAPBUTTONLABEL_DESC"
+				/>
+			</fieldset>
+			<fieldset name="two">
+				<field
+						name="confirmtext"
+						type="textare"
+						label="MOD_QLGOOGLEMAPS_CONFIRMTEXT_LABEL"
+						description="MOD_QLGOOGLEMAPS_CONFIRMTEXT_DESC"
+				/>
+            </fieldset>
+			<fieldset name="three">
+				<field
+						name="eprivacyReadText"
+						type="editor"
+						filter="safehtml"
+						label="MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT_LABEL"
+						description="MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT_DESC"
 				/>
             </fieldset>
 			<fieldset

@@ -6,44 +6,32 @@
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
+defined('_JEXEC') or die;
+
 // no direct access
-use Joomla\CMS\Language\Text;defined('_JEXEC') or die;
-JHtml::stylesheet('mod_qlgooglemaps/styles.css');
-JHtml::script("mod_qlgooglemaps/script.js");
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\WebAsset\WebAssetManager;
 
-/** @var $params JRegistry */
 /** @var $module stdClass */
-/** @var $eprivacylinkRouted string Link to e-privacy */
-$url = $params->get('url');
-$dsgvo = $params->get('dsgvo');
-$info = !empty(strip_tags($params->get('info', ''))) ? $params->get('info', '') : Text::_('MOD_QLGOOGLEMAPS_CONSENT');
-$link_eprivacy = $params->get('link_eprivacy');
-$buttonlabel = $params->get('buttonlabel');
-$eprivacylabel = !empty(strip_tags($params->get('eprivacylabel', ''))) ? $params->get('eprivacylabel') : Text::_('MOD_QLGOOGLEMAPS_TODSGVO');
-?>
-<script>
-    <?php $unique = rand(1, 1000); ?>;
-    let mapId = 'gmframe<?php echo $unique; ?>';
-    let datenschutzId = 'datenschutz<?php echo $unique; ?>';
-    // document.getElementById(mapId).src = '';
+/** @var $params JRegistry */
 
-    function qlGoogleMapsLoadIframeSrc()
-    {
-      if (!confirm('<?php echo Text::_('MOD_QLGOOGLEMAPS_POPUP'); ?>')) {
-        document.getElementById(mapId).src = '';
-        document.getElementById(mapId).style.display = 'none';
-        return false;
-      }
-      document.getElementById(datenschutzId).disabled = 'disabled';
-      document.getElementById(mapId).src = '<?php echo $url; ?>';
-      document.getElementById(mapId).style.display = 'block';
-    }
-</script>
-
-<div class="qlmaps" id="module<?php echo $module->id ?>">
-    <input class="form-control" type="checkbox" name="datenschutz<?php echo $unique; ?>" id="datenschutz<?php echo $unique; ?>" value="1" onChange="if(this.checked)document.getElementById('buttonMap<?php echo $unique; ?>').disabled = false; else document.getElementById('buttonMap<?php echo $unique; ?>').disabled = 'disabled';" style="display:inline-block;float:left;width:5%;margin-top:8px;">
-    <label for="datenschutz<?php echo $unique; ?>" style="display:inline-block;float:left;width:90%;"><?php echo $info; ?></label>
-    <a class="btn btn-primary" href="<?php echo $eprivacylinkRouted; ?>" target="_blank"><?php echo $eprivacylabel; ?></a>
-    <button class="btn btn-primary" id="buttonMap<?php echo $unique; ?>" onclick="qlGoogleMapsLoadIframeSrc(); return false;" disabled><?php echo Text::_('MOD_QLGOOGLEMAPS_BUTTON'); ?></button>
-    <iframe id="gmframe<?php echo $unique; ?>" src="" class="googlemaps" frameborder="0" style="border:0; display:none;" allowfullscreen></iframe>
-</div>
+switch ($params->get('clicksolution', 'zero')) {
+    case 100:
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_four');
+        require $path;
+        break;
+    case 3:
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_three');
+        require $path;
+        break;
+    case 2:
+    case 1:
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_one');
+        require $path;
+        break;
+    case 0:
+    default:
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_zero');
+        require $path;
+}
