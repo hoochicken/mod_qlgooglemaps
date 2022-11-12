@@ -22,7 +22,13 @@ switch ($params->get('clicksolution', 'zero')) {
         require $path;
         break;
     case 3:
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_three');
+        require $path;
+        break;
     case 2:
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_two');
+        require $path;
+        break;
     case 1:
         $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_one');
         require $path;

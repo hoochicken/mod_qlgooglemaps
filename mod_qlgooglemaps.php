@@ -16,7 +16,6 @@ $iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attr
 // if no url given, wie won't display anything :-)
 if (empty($iframe_url)) return;
 
-
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\WebAsset\WebAssetManager;
@@ -29,7 +28,7 @@ $confirmtext = $params->get('one_confirmtext', '');
 $eprivacyItemId = $params->get('eprivacyItemId', false);
 $eprivacylinkRoute = JRoute::_('index.php?Itemid=' . $eprivacyItemId);
 
-$clicksolution = $params->get('clicksolution', 0);
+$clicksolution = (int) $params->get('clicksolution', 0);
 $confirmtext = $params->get('confirmtext', '');
 
 $eprivacyReadText = $params->get('eprivacyReadText', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT'));

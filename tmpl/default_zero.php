@@ -8,6 +8,10 @@
 // no direct access
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\WebAsset\WebAssetManager;
+
 /** @var WebAssetManager $wa */
 /** @var JRegistry $params */
 /** @var stdClass $module  */
@@ -24,20 +28,16 @@ defined('_JEXEC') or die;
 /** @var string $infotext  */
 /** @var string $infotextDisplay  */
 /** @var int $clicksolution  */
+/** @var string $scripts_afterclickloaded  */
 
-$iframe_url = $params->get('iframe_url', '');
-// if no url given, wie won't display anything :-)
-if (empty($iframe_url)) return;
 
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
-use Joomla\CMS\WebAsset\WebAssetManager;
+// custom scripts are only loaded directly
+if (!empty(trim($scripts_afterclickloaded))) $wa->registerScript('mod_qlgooglemaps', $scripts_afterclickloaded);
+
+
 
 $unique = uniqid();
 
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->registerStyle('qlgooglemaps', 'mod_qlgooglemaps/styles.css');
-$wa->useStyle('qlgooglemaps');
 ?>
 <?php if ($infotextDisplay) : ?>
     <div class="info"><?php echo $infotext; ?></div>

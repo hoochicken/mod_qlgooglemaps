@@ -48,7 +48,7 @@
 				<field
 						name="iframe_attributes"
 						type="textarea"
-						default=""
+						default="allowfullscreen"
 						label="MOD_QLGOOGLEMAPS_IFRAMEATTRIBUTES_LABEL"
 						description="MOD_QLGOOGLEMAPS_IFRAMEATTRIBUTES_DESC"
 				/>
@@ -64,6 +64,16 @@
 					<option value="3">MOD_QLGOOGLEMAPS_THREE</option>
 					<option value="100">MOD_QLGOOGLEMAPS_PITA</option>
 				</field>
+			</fieldset>
+			<fieldset name="texts">
+				<field
+						name="info"
+						type="editor"
+						filter="safehtml"
+						label="MOD_QLGOOGLEMAPS_INFO_LABEL"
+						description="MOD_QLGOOGLEMAPS_INFO_DESC"
+				/>
+				<field name="spacereprivacybutton" type="spacer" label="MOD_QLGOOGLEMAPS_SPACEREPRIVACYBUTTON_LABEL" />
 				<field
 						name="eprivacybutton"
 						type="radio"
@@ -86,13 +96,7 @@
 						label="MOD_QLGOOGLEMAPS_EPRIVACYLINK_LABEL"
 						description="MOD_QLGOOGLEMAPS_EPRIVACYLINK_DESC"
 				/>
-				<field
-						name="info"
-						type="editor"
-						filter="safehtml"
-						label="MOD_QLGOOGLEMAPS_INFO_LABEL"
-						description="MOD_QLGOOGLEMAPS_INFO_DESC"
-				/>
+				<field name="spaceradditionalscripts" type="spacer" label="MOD_QLGOOGLEMAPS_SPACERADDITIONALSCRIPTS_LABEL" />
 				<field
 						name="scripts_afterclickloaded"
 						type="textarea"
