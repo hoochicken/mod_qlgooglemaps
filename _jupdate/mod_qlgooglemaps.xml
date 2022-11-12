@@ -5,7 +5,7 @@
 		<type>module</type>
 		<element>mod_qlgooglemaps</element>
 		<version>1.0.0</version>
-		<description>mod_qlgooglemaps displays a google map after user's consent</description>
+		<description>mod_qlgooglemaps displays an iframe after user's consent</description>
 		<infourl title="ql.de - Blackforest Software">https://ql.de</infourl>
 		<downloads>
 			<downloadurl type="full" format="zip">https://github.com/hoochicken/mod_qlgooglemaps/archive/refs/tags/v1.0.0.zip</downloadurl>

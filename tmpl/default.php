@@ -17,15 +17,17 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 /** @var stdClass $module */
 /** @var int $clicksolution */
 /** @var string $confirmtext */
-/** @var bool $eprivacybutton  */
-/** @var string $eprivacybuttonlabel  */
-/** @var string $eprivacyItemId */
-/** @var string $eprivacylinkRoute */
-/** @var int $eprivacyReadText */
-/** @var bool $eprivacyReadTextDisplay */
+/** @var bool $privacybutton  */
+/** @var string $privacybuttonlabel  */
+/** @var string $privacyItemId */
+/** @var string $privacylinkRoute */
+/** @var int $privacyReadText */
+/** @var bool $privacyReadTextDisplay */
 /** @var string $iframe_url */
 /** @var string $iframe_attributes */
 /** @var string $iframebuttonDisabled disabled | ''*/
+/** @var string $image */
+/** @var string $imageSrcAttribute */
 /** @var string $infotext */
 /** @var bool $infotextDisplay */
 /** @var string $iframebuttonlabel */
@@ -47,26 +49,29 @@ $onclick = sprintf($onclick, $clicksolution, $unique, $iframe_url, $iframe_attri
     <?php endif; ?>
 
     <?php if (3 <= $clicksolution) : ?>
-        <div class="eprivacyReadText">
-            <input type="checkbox" value="1" onchange="qlgooglemapsEnableButton('<?php echo $unique; ?>')" name="qlgooglemaps_readeprivacy_<?php echo $unique; ?>" id="qlgooglemaps_readeprivacy_<?php echo $unique; ?>"/>
-            <label for="qlgooglemaps_readeprivacy_<?php echo $unique; ?>"><?php echo $eprivacyReadText; ?></label>
+        <div class="privacyReadText">
+            <input type="checkbox" value="1" onchange="qlgooglemapsEnableButton('<?php echo $unique; ?>')" name="qlgooglemaps_readprivacy_<?php echo $unique; ?>" id="qlgooglemaps_readprivacy_<?php echo $unique; ?>"/>
+            <label for="qlgooglemaps_readprivacy_<?php echo $unique; ?>"><?php echo $privacyReadText; ?></label>
         </div>
     <?php endif; ?>
     <div class="buttons">
-        <?php if ($eprivacybutton) : ?>
-            <button onclick="window.open('<?php echo $eprivacylinkRoute; ?>', '_blank')">
-                <?php echo $eprivacybuttonlabel; ?>
+        <?php if ($privacybutton) : ?>
+            <button onclick="window.open('<?php echo $privacylinkRoute; ?>', '_blank')">
+                <?php echo $privacybuttonlabel; ?>
             </button>
         <?php endif; ?>
 
-        <?php if (1 <= $clicksolution) : ?>
+        <?php if (1 <= $clicksolution && empty($image)) : ?>
             <button <?php echo $iframebuttonDisabled; ?> id="qlgooglemaps_button_<?php echo $unique; ?>" onclick="<?php echo $onclick; ?>" class="qlgooglemaps_button">
-                <?php echo $params->get('mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_IFRAMEBUTTONLABEL')); ?>
+                <?php echo $iframebuttonlabel; ?>
             </button>
         <?php endif; ?>
     </div>
 
     <div class="qlgooglemaps iframe_wrapper" id="qlgooglemaps_iframe_<?php echo $unique; ?>">
+        <?php if (1 <= $clicksolution && !empty($image)) : ?>
+            <input <?php echo $iframebuttonDisabled; ?> type="image" <?php echo $imageSrcAttribute; ?>  id="qlgooglemaps_button_image_<?php echo $unique; ?>" onclick="<?php echo $onclick; ?>" class="qlgooglemaps_button" />
+        <?php endif; ?>
         <?php if (0 === $clicksolution) : ?>
             <iframe id="qlgooglemaps_frame_<?php echo $unique; ?>" src="<?php echo $iframe_url; ?>" class="qlgooglemaps" style="border:0;" allowfullscreen></iframe>
         <?php endif; ?>
