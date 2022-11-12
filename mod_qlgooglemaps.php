@@ -17,7 +17,7 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 /** @var $module stdClass */
 
 require_once dirname(__FILE__) . '/helper.php';
-$obj_helper = new modQlgooglemapsHelper($module, $params);
+$obj_helper = new modQlgooglemapsHelper($module, $params, Factory::getApplication()->getDocument()->getWebAssetManager());
 $array = $obj_helper->initiateParams();
 extract($array);
 
@@ -25,6 +25,6 @@ extract($array);
 if (empty($iframe_url)) return;
 
 // add styles to DOM and scripts as well
-$obj_helper->addStylesAndScripts(Factory::getApplication()->getDocument()->getWebAssetManager());
+$obj_helper->addStylesAndScripts($clicksolution, $scripts_afterclickloaded);
 
 require JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default'));

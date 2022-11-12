@@ -14,6 +14,8 @@ defined('_JEXEC') or die;
 /** @var stdClass $module */
 /** @var int $clicksolution */
 /** @var string $confirmtext */
+/** @var bool $eprivacybutton */
+/** @var string $eprivacybuttonlabel */
 /** @var string $eprivacyItemId */
 /** @var string $eprivacylinkRoute */
 /** @var int $eprivacyReadText */
@@ -22,6 +24,7 @@ defined('_JEXEC') or die;
 /** @var string $iframe_attributes */
 /** @var string $infotext */
 /** @var bool $infotextDisplay */
+/** @var string $mapbuttonlabel */
 /** @var string $qlgooglemaps_map id of igrame element */
 /** @var string $qlgooglemaps_button */
 /** @var string $qlgooglemaps_iframe */
@@ -38,12 +41,16 @@ $onclick = sprintf($onclick, $unique, $iframe_url, $iframe_attributes, $scripts_
     <div class="info"><?php echo $infotext; ?></div>
 <?php endif; ?>
 
-<?php if ($params->get('eprivacybutton', true)) : ?>
-    <button onclick="window.open('<?php echo $eprivacylinkRoute; ?>', '_blank')"><?php echo $params->get('eprivacybuttonlabel', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYBUTTON')); ?></button>
-<?php endif; ?>
+<div class="buttons">
+    <?php if ($eprivacybutton) : ?>
+        <button onclick="window.open('<?php echo $eprivacylinkRoute; ?>', '_blank')">
+            <?php echo $eprivacybuttonlabel; ?>
+        </button>
+    <?php endif; ?>
 
-<button id="qlgooglemaps_button_<?php echo $unique; ?>" onclick="<?php echo $onclick; ?>">
-    <?php echo $params->get('one_mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_MAPBUTTONLABEL')); ?>
-</button>
+    <button id="qlgooglemaps_button_<?php echo $unique; ?>" onclick="<?php echo $onclick; ?>" class="qlgooglemaps_button">
+        <?php echo $mapbuttonlabel; ?>
+    </button>
+</div>
 
 <div class="qlgooglemaps iframe_wrapper" id="qlgooglemaps_iframe_<?php echo $unique; ?>"></div>

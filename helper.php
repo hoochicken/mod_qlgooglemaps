@@ -14,13 +14,15 @@ defined('_JEXEC') or die;
 
 class modQlgooglemapsHelper
 {
-    public $params;
     public $module;
+    public $params;
+    public $wa;
 
-	function __construct($module,$params)
+	function __construct($module, $params, $wa)
     {
-        $this->module=$module;
-        $this->params=$params;
+        $this->module = $module;
+        $this->params = $params;
+        $this->wa = $wa;
     }
 
     /**
@@ -33,6 +35,8 @@ class modQlgooglemapsHelper
 
         $clicksolution = (int) $params->get('clicksolution', 0);
         $confirmtext = $this->getTextByParamOrLanguageOverride('confirmtext', Text::_('MOD_QLGOOGLEMAPS_CONFIRMTEXTDEFAULT'));
+        $eprivacybutton = (bool) $params->get('eprivacybutton', false);
+        $eprivacybuttonlabel = $params->get('eprivacybuttonlabel', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYBUTTON'));
         $eprivacyItemId = $params->get('eprivacyItemId', false);
         $eprivacylinkRoute = JRoute::_('index.php?Itemid=' . $eprivacyItemId);
         $eprivacyReadText = $this->getTextByParamOrLanguageOverride('eprivacyReadText', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYREADTEXTDEFAULT'));
@@ -41,6 +45,7 @@ class modQlgooglemapsHelper
         $iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attributes', '')));
         $infotext = $params->get('info', '');
         $infotextDisplay = !empty(strip_tags($infotext));
+        $mapbuttonlabel = $params->get('mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_MAPBUTTONLABELDEFAULT'));
         $pitatexts = str_replace(["\n", "\r", '~~~~'], '~~', $params->get('pitatexts', ''));
         $scripts_afterclickloaded = $params->get('scripts_afterclickloaded', '');
         $unique = uniqid();
@@ -49,6 +54,8 @@ class modQlgooglemapsHelper
         return [
             'clicksolution' => $clicksolution,
             'confirmtext' => $confirmtext,
+            'eprivacybutton' => $eprivacybutton,
+            'eprivacybuttonlabel' => $eprivacybuttonlabel,
             'eprivacyItemId' => $eprivacyItemId,
             'eprivacylinkRoute' => $eprivacylinkRoute,
             'eprivacyReadText' => $eprivacyReadText,
@@ -57,6 +64,7 @@ class modQlgooglemapsHelper
             'iframe_attributes' => $iframe_attributes,
             'infotext' => $infotext,
             'infotextDisplay' => $infotextDisplay,
+            'mapbuttonlabel' => $mapbuttonlabel,
             'pitatexts' => $pitatexts,
             'scripts_afterclickloaded' => $scripts_afterclickloaded,
             'unique' => $unique,
@@ -81,15 +89,16 @@ class modQlgooglemapsHelper
         return $value;
     }
 
-    /**
-     * @param WebAssetManager $wa
-     */
-    public function addStylesAndScripts($wa)
+    public function addStylesAndScripts($clicksolution, $scripts = '')
     {
-        $wa->registerStyle('mod_qlgooglemaps', 'mod_qlgooglemaps/styles.css');
-        $wa->useStyle('mod_qlgooglemaps');
-        $wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');
-        $wa->useScript('mod_qlgooglemaps');
+        $this->wa->registerStyle('mod_qlgooglemaps', 'mod_qlgooglemaps/styles.css');
+        $this->wa->useStyle('mod_qlgooglemaps');
+        $this->wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');
+        $this->wa->useScript('mod_qlgooglemaps');
 
+        if (!empty(trim($scripts)) && 0 === $clicksolution) {
+            $this->wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');
+            $this->wa->useScript('mod_qlgooglemaps');
+        }
     }
 }

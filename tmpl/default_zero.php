@@ -12,35 +12,44 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\WebAsset\WebAssetManager;
 
-/** @var WebAssetManager $wa */
 /** @var JRegistry $params */
-/** @var stdClass $module  */
-/** @var string $module  */
-/** @var string $confirmtext  */
-/** @var string $eprivacyItemId  */
-/** @var string $eprivacylinkRoute  */
-/** @var string $iframe_url  */
-/** @var string $unique  */
-/** @var string $unique_key  */
-/** @var string $qlgooglemaps_map id of igrame element  */
-/** @var string $qlgooglemaps_button  */
-/** @var string $qlgooglemaps_iframe  */
-/** @var string $infotext  */
-/** @var string $infotextDisplay  */
-/** @var int $clicksolution  */
-/** @var string $scripts_afterclickloaded  */
+/** @var stdClass $module */
+/** @var int $clicksolution */
+/** @var string $confirmtext */
+/** @var bool $eprivacybutton  */
+/** @var string $eprivacybuttonlabel  */
+/** @var string $eprivacyItemId */
+/** @var string $eprivacylinkRoute */
+/** @var int $eprivacyReadText */
+/** @var bool $eprivacyReadTextDisplay */
+/** @var string $iframe_url */
+/** @var string $iframe_attributes */
+/** @var string $infotext */
+/** @var bool $infotextDisplay */
+/** @var string $mapbuttonlabel */
+/** @var string $qlgooglemaps_map id of igrame element */
+/** @var string $qlgooglemaps_button */
+/** @var string $qlgooglemaps_iframe */
+/** @var string $scripts_afterclickloaded */
+/** @var string $pitatexts */
+/** @var string $unique */
+/** @var string $unique_key */
 
-// custom scripts are only loaded directly
-if (!empty(trim($scripts_afterclickloaded))) $wa->registerScript('mod_qlgooglemaps', $scripts_afterclickloaded);
 ?>
+
 <?php if ($infotextDisplay) : ?>
     <div class="info"><?php echo $infotext; ?></div>
 <?php endif; ?>
 
-<?php if ($params->get('eprivacybutton', true)) : ?>
-    <button onclick="window.open('<?php echo $eprivacylinkRoute; ?>', '_blank')"><?php echo $params->get('eprivacybuttonlabel', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYBUTTON')); ?></button>
+<?php if ($eprivacybutton) : ?>
+<div class="buttons">
+    <button onclick="window.open('<?php echo $eprivacylinkRoute; ?>', '_blank')">
+        <?php echo $eprivacybuttonlabel; ?>
+    </button>
+</div>
 <?php endif; ?>
 
-<div class="qlgooglemaps" id="module<?php echo $module->id ?>">
+<div class="qlgooglemaps iframe_wrapper" id="qlgooglemaps_iframe_<?php echo $unique; ?>">
     <iframe id="qlgooglemaps_frame_<?php echo $unique; ?>" src="<?php echo $iframe_url; ?>" class="qlgooglemaps" style="border:0;" allowfullscreen></iframe>
 </div>
+

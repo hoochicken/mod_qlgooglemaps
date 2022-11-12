@@ -16,6 +16,8 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 /** @var $module stdClass */
 /** @var $params JRegistry */
 
+echo '<div class="qlgooglemaps">';
+
 switch ($params->get('clicksolution', 'zero')) {
     case 100:
         $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_pita');
@@ -38,3 +40,5 @@ switch ($params->get('clicksolution', 'zero')) {
         $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_zero');
         require $path;
 }
+
+echo '</div>';
