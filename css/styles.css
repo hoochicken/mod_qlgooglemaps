@@ -10,3 +10,4 @@ div.qlgooglemaps .privacyReadText {width:100%;float:left; }
 div.qlgooglemaps .privacyReadText input {float:left; display:inline-block; margin: 8px 15px 0 0;}
 div.qlgooglemaps .privacyReadText label {float:left; display:inline-block;}
 div.qlgooglemaps .qlgooglemaps_button {clear:both;}
+div.qlgooglemaps .qlgooglemaps.iframe_wrapper {float:left;}
