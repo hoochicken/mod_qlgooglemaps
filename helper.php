@@ -45,7 +45,7 @@ class modQlgooglemapsHelper
         $iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attributes', '')));
         $infotext = $params->get('info', '');
         $infotextDisplay = !empty(strip_tags($infotext));
-        $mapbuttonlabel = $params->get('mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_MAPBUTTONLABELDEFAULT'));
+        $mapbuttonlabel = $this->getTextByParamOrLanguageOverride('mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_MAPBUTTONLABELDEFAULT'));
         $pitatexts = str_replace(["\n", "\r", '~~~~'], '~~', $params->get('pitatexts', ''));
         $scripts_afterclickloaded = $params->get('scripts_afterclickloaded', '');
         $unique = uniqid();
