@@ -24,7 +24,7 @@ defined('_JEXEC') or die;
 /** @var string $iframe_attributes */
 /** @var string $infotext */
 /** @var bool $infotextDisplay */
-/** @var string $mapbuttonlabel */
+/** @var string $iframebuttonlabel */
 /** @var string $qlgooglemaps_map id of igrame element */
 /** @var string $qlgooglemaps_button */
 /** @var string $qlgooglemaps_iframe */
@@ -49,7 +49,7 @@ $onclick = sprintf($onclick, $unique, $iframe_url, $iframe_attributes, $scripts_
     <?php endif; ?>
 
     <button id="qlgooglemaps_button_<?php echo $unique; ?>" onclick="<?php echo $onclick; ?>" class="qlgooglemaps_button">
-        <?php echo $mapbuttonlabel; ?>
+        <?php echo $iframebuttonlabel; ?>
     </button>
 </div>
 

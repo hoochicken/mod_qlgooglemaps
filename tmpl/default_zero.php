@@ -26,7 +26,7 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 /** @var string $iframe_attributes */
 /** @var string $infotext */
 /** @var bool $infotextDisplay */
-/** @var string $mapbuttonlabel */
+/** @var string $iframebuttonlabel */
 /** @var string $qlgooglemaps_map id of igrame element */
 /** @var string $qlgooglemaps_button */
 /** @var string $qlgooglemaps_iframe */

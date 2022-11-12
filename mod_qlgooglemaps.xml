@@ -109,8 +109,8 @@
 				<field
 						name="mapbuttonlabel"
 						type="text"
-						label="MOD_QLGOOGLEMAPS_MAPBUTTONLABEL_LABEL"
-						description="MOD_QLGOOGLEMAPS_MAPBUTTONLABEL_DESC"
+						label="MOD_QLGOOGLEMAPS_IFRAMEBUTTONLABEL_LABEL"
+						description="MOD_QLGOOGLEMAPS_IFRAMEBUTTONLABEL_DESC"
 				/>
 			</fieldset>
 			<fieldset name="two">
@@ -135,7 +135,7 @@
 						name="pitatexts"
 						type="textarea"
 						rows="10"
-						default="Are you sure, you want to proceed?&#13;&#10;Really??&#13;&#10;Just asking just in case you changed your mind&#13;&#10;Legally I need you ONE more time to consent ... SORRY!&#13;&#10;Haha, and you believed that!!!"
+						default="Are you sure, you want to proceed?&#13;&#10;Really??&#13;&#10;Just asking just in case you changed your mind&#13;&#10;Legally I need you ONE more time to consent ... SORRY!&#13;&#10;Haha, and you believed that!!!&#13;&#10;You have to take this serous, so confirm you have read the private policy and also UNDERSTOOD it&#13;&#10;Aaaaaaaaaaahahhahahhah!!!"
 						label="MOD_QLGOOGLEMAPS_PITATEXTS_LABEL"
 						description="MOD_QLGOOGLEMAPS_PITATEXTS_DESC"
 				/>
