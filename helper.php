@@ -45,7 +45,8 @@ class modQlgooglemapsHelper
         $iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attributes', '')));
         $infotext = $params->get('info', '');
         $infotextDisplay = !empty(strip_tags($infotext));
-        $iframebuttonlabel = $this->getTextByParamOrLanguageOverride('mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_IFRAMEBUTTONLABELDEFAULT'));
+        $iframebuttonlabel = $this->getTextByParamOrLanguageOverride('iframebuttonlabel', Text::_('MOD_QLGOOGLEMAPS_IFRAMEBUTTONLABELDEFAULT'));
+        $iframebuttonDisabled = (3 <= $clicksolution) ? 'disabled' : '';
         $pitatexts = str_replace(["\n", "\r", '~~~~'], '~~', $params->get('pitatexts', ''));
         $scripts_afterclickloaded = $params->get('scripts_afterclickloaded', '');
         $unique = uniqid();
@@ -64,7 +65,8 @@ class modQlgooglemapsHelper
             'iframe_attributes' => $iframe_attributes,
             'infotext' => $infotext,
             'infotextDisplay' => $infotextDisplay,
-            'mapbuttonlabel' => $iframebuttonlabel,
+            'iframebuttonDisabled' => $iframebuttonDisabled,
+            'iframebuttonlabel' => $iframebuttonlabel,
             'pitatexts' => $pitatexts,
             'scripts_afterclickloaded' => $scripts_afterclickloaded,
             'unique' => $unique,
