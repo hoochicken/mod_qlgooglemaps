@@ -22,11 +22,10 @@ class modQlgooglemapsHelper
         $this->params=$params;
     }
 
-    public function someMethod()
-    {
-
-	}
-
+    /**
+     * initiating parameters into useful variables
+     * @return array
+     */
     public function initiateParams()
     {
         $params = $this->params;
@@ -65,6 +64,9 @@ class modQlgooglemapsHelper
 	}
 
     /**
+     * returns parameter value
+     * if parameter value is empty, default is returned
+     * if parameter value is a jtext PLACEHOLDER for language override, this language override is returned
      * @param string $parameterName
      * @param string $default
      * @return string
