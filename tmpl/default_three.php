@@ -27,5 +27,8 @@ $wa->registerScript('qlgooglemaps', 'mod_qlgooglemaps/script.js');
 $wa->useScript('qlgooglemaps');
 ?>
 <div class="qlgooglemaps" id="module<?php echo $module->id ?>">
-    <iframe id="qlgooglemaps_frame_<?php echo $unique; ?>" src="<?php echo $url; ?>" class="qlgooglemaps" style="border:0;" allowfullscreen></iframe>
+    <iframe id="qlgooglemaps_frame_<?php echo $unique; ?>" src="<?php echo $iframe_url; ?>" class="qlgooglemaps" style="border:0;" allowfullscreen></iframe>
 </div>
+
+
+

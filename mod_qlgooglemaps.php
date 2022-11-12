@@ -10,9 +10,12 @@
 defined('_JEXEC') or die;
 
 /** @var $params JRegistry */
-$url = $params->get('url', '');
+$iframe_url = $params->get('iframe_url', '');
+$iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attributes', '')));
+
 // if no url given, wie won't display anything :-)
-if (empty($url)) return;
+if (empty($iframe_url)) return;
+
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
@@ -29,12 +32,15 @@ $eprivacylinkRoute = JRoute::_('index.php?Itemid=' . $eprivacyItemId);
 $clicksolution = $params->get('clicksolution', 0);
 $confirmtext = $params->get('confirmtext', '');
 
-$eprivacyReadText = $params->get('eprivacyReadText', '');
+$eprivacyReadText = $params->get('eprivacyReadText', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT'));
 $eprivacyReadTextDisplay = !empty(strip_tags($eprivacyReadText));
+
+$scripts_afterclickloaded = $params->get('scripts_afterclickloaded', '');
+
 $infotext = $params->get('info', '');
 $infotextDisplay = !empty(strip_tags($infotext));
 
-
+$iframeButtonDisabled = $clicksolution >= 3;
 
 $unique = uniqid();
 $unique_key = 'qlgooglemaps_' . $unique;

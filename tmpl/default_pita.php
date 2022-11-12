@@ -19,7 +19,7 @@ $dsgvo = $params->get('dsgvo');
 $info = !empty(strip_tags($params->get('info', ''))) ? $params->get('info', '') : Text::_('MOD_QLGOOGLEMAPS_CONSENT');
 $link_eprivacy = $params->get('link_eprivacy');
 $buttonlabel = $params->get('buttonlabel');
-$eprivacylabel = !empty(strip_tags($params->get('eprivacylabel', ''))) ? $params->get('eprivacylabel') : Text::_('MOD_QLGOOGLEMAPS_TODSGVO');
+$eprivacylabel = !empty(strip_tags($params->get('eprivacylabel', ''))) ? $params->get('eprivacylabel') : Text::_('MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT');
 ?>
 <script>
     <?php $unique = rand(1, 1000); ?>;

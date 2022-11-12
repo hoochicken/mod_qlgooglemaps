@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
 /** @var string $confirmtext  */
 /** @var string $eprivacyItemId  */
 /** @var string $eprivacylinkRoute  */
-/** @var string $url  */
+/** @var string $iframe_url  */
 /** @var string $unique  */
 /** @var string $unique_key  */
 /** @var string $qlgooglemaps_map id of igrame element  */
@@ -25,9 +25,9 @@ defined('_JEXEC') or die;
 /** @var string $infotextDisplay  */
 /** @var int $clicksolution  */
 
-$url = $params->get('url', '');
+$iframe_url = $params->get('iframe_url', '');
 // if no url given, wie won't display anything :-)
-if (empty($url)) return;
+if (empty($iframe_url)) return;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
@@ -48,5 +48,5 @@ $wa->useStyle('qlgooglemaps');
 <?php endif; ?>
 
 <div class="qlgooglemaps" id="module<?php echo $module->id ?>">
-    <iframe id="qlgooglemaps_frame_<?php echo $unique; ?>" src="<?php echo $url; ?>" class="qlgooglemaps" style="border:0;" allowfullscreen></iframe>
+    <iframe id="qlgooglemaps_frame_<?php echo $unique; ?>" src="<?php echo $iframe_url; ?>" class="qlgooglemaps" style="border:0;" allowfullscreen></iframe>
 </div>
