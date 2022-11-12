@@ -11,55 +11,44 @@ use Joomla\CMS\Language\Text;
 defined('_JEXEC') or die;
 
 /** @var JRegistry $params */
-/** @var stdClass $module  */
-/** @var string $module  */
-/** @var string $confirmtext  */
-/** @var string $eprivacyItemId  */
-/** @var string $eprivacylinkRoute  */
-/** @var string $iframe_url  */
+/** @var stdClass $module */
+/** @var int $clicksolution */
+/** @var string $confirmtext */
+/** @var string $eprivacyItemId */
+/** @var string $eprivacylinkRoute */
+/** @var int $eprivacyReadText */
+/** @var bool $eprivacyReadTextDisplay */
+/** @var string $iframe_url */
 /** @var string $iframe_attributes */
-/** @var string $unique  */
-/** @var string $unique_key  */
-/** @var string $qlgooglemaps_map id of igrame element  */
-/** @var string $qlgooglemaps_button  */
-/** @var string $qlgooglemaps_iframe  */
-/** @var string $infotext  */
+/** @var string $infotext */
+/** @var bool $infotextDisplay */
+/** @var string $qlgooglemaps_map id of igrame element */
+/** @var string $qlgooglemaps_button */
+/** @var string $qlgooglemaps_iframe */
 /** @var string $scripts_afterclickloaded */
-/** @var string $iframe_attributes */
-/** @var bool $infotextDisplay  */
-/** @var int $clicksolution  */
-/** @var int $eprivacyReadText  */
-/** @var bool $eprivacyReadTextDisplay  */
-/** @var bool $iframeButtonDisabled */
+/** @var string $pitatexts */
+/** @var string $unique */
+/** @var string $unique_key */
 
-
+$onclick = 'qlgooglemapsLoadIframePitaClickSolution(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\')';
+$onclick = sprintf($onclick, $unique, $iframe_url, $iframe_attributes, $scripts_afterclickloaded, $confirmtext, $pitatexts);
 ?>
 
 <?php if ($infotextDisplay) : ?>
     <div class="info"><?php echo $infotext; ?></div>
 <?php endif; ?>
 
-<?php if (2 <= $clicksolution && $eprivacyReadTextDisplay) : ?>
-    <div class="eprivacyReadText">
-        <input type="checkbox" value="1" onchange="qlgooglemapsEnableButton('<?php echo $unique; ?>')" name="qlgooglemaps_readeprivacy_<?php echo $unique; ?>" id="qlgooglemaps_readeprivacy_<?php echo $unique; ?>"/>
-        <label for="qlgooglemaps_readeprivacy_<?php echo $unique; ?>"><?php echo $eprivacyReadText; ?></label>
-    </div>
-<?php endif; ?>
-
-<?php if (1 <= $clicksolution) : ?>
-<button id="qlgooglemaps_button_<?php echo $unique; ?>" <?php if ($iframeButtonDisabled) echo 'disabled'; ?> onclick="qlgooglemapsLoadIframe(
-  '<?php echo $unique; ?>',
-  '<?php echo $iframe_url; ?>',
-  '<?php echo $scripts_afterclickloaded; ?>',
-  <?php echo $clicksolution; ?>,
-  '<?php echo $confirmtext; ?>',
-  '<?php echo $iframe_attributes; ?>')"><?php echo $params->get('one_mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_MAPBUTTONLABEL')); ?></button>
-<?php endif; ?>
-
 <?php if ($params->get('eprivacybutton', true)) : ?>
     <button onclick="window.open('<?php echo $eprivacylinkRoute; ?>', '_blank')"><?php echo $params->get('eprivacybuttonlabel', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYBUTTON')); ?></button>
 <?php endif; ?>
 
-<div class="qlgooglemaps iframeHolder" id="qlgooglemaps_iframe_<?php echo $unique; ?>"></div>
+<div class="eprivacyReadText">
+    <input type="checkbox" value="1" onchange="qlgooglemapsEnableButton('<?php echo $unique; ?>')" name="qlgooglemaps_readeprivacy_<?php echo $unique; ?>" id="qlgooglemaps_readeprivacy_<?php echo $unique; ?>"/>
+    <label for="qlgooglemaps_readeprivacy_<?php echo $unique; ?>"><?php echo $eprivacyReadText; ?></label>
+</div>
 
-<!--iframe src="https://player.vimeo.com/video/769069809?h=f1daa2ff03&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe-->
+<button disabled id="qlgooglemaps_button_<?php echo $unique; ?>" onclick="<?php echo $onclick; ?>">
+    <?php echo $params->get('one_mapbuttonlabel', Text::_('MOD_QLGOOGLEMAPS_MAPBUTTONLABEL')); ?>
+</button>
+
+<div class="qlgooglemaps iframe_wrapper" id="qlgooglemaps_iframe_<?php echo $unique; ?>"></div>

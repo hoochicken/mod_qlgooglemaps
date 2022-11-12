@@ -18,7 +18,7 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 
 switch ($params->get('clicksolution', 'zero')) {
     case 100:
-        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_four');
+        $path = JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default') . '_pita');
         require $path;
         break;
     case 3:

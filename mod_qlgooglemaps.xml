@@ -107,7 +107,7 @@
             </fieldset>
 			<fieldset name="one">
 				<field
-						name="one_mapbuttonlabel"
+						name="mapbuttonlabel"
 						type="text"
 						label="MOD_QLGOOGLEMAPS_MAPBUTTONLABEL_LABEL"
 						description="MOD_QLGOOGLEMAPS_MAPBUTTONLABEL_DESC"
@@ -116,7 +116,7 @@
 			<fieldset name="two">
 				<field
 						name="confirmtext"
-						type="textare"
+						type="textarea"
 						label="MOD_QLGOOGLEMAPS_CONFIRMTEXT_LABEL"
 						description="MOD_QLGOOGLEMAPS_CONFIRMTEXT_DESC"
 				/>
@@ -128,6 +128,16 @@
 						filter="safehtml"
 						label="MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT_LABEL"
 						description="MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT_DESC"
+				/>
+            </fieldset>
+			<fieldset name="pita">
+				<field
+						name="pitatexts"
+						type="textarea"
+						rows="10"
+						default="Are you sure, you want to proceed?&#13;&#10;Really??&#13;&#10;Just asking just in case you changed your mind&#13;&#10;Legally I need you ONE more time to consent ... SORRY!&#13;&#10;Haha, and you believed that!!!"
+						label="MOD_QLGOOGLEMAPS_PITATEXTS_LABEL"
+						description="MOD_QLGOOGLEMAPS_PITATEXTS_DESC"
 				/>
             </fieldset>
 			<fieldset

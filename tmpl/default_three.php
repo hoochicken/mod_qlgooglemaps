@@ -11,28 +11,26 @@ use Joomla\CMS\Language\Text;
 defined('_JEXEC') or die;
 
 /** @var JRegistry $params */
-/** @var stdClass $module  */
-/** @var string $module  */
-/** @var string $confirmtext  */
-/** @var string $eprivacyItemId  */
-/** @var string $eprivacylinkRoute  */
-/** @var string $iframe_url  */
+/** @var stdClass $module */
+/** @var int $clicksolution */
+/** @var string $confirmtext */
+/** @var string $eprivacyItemId */
+/** @var string $eprivacylinkRoute */
+/** @var int $eprivacyReadText */
+/** @var bool $eprivacyReadTextDisplay */
+/** @var string $iframe_url */
 /** @var string $iframe_attributes */
-/** @var string $unique  */
-/** @var string $unique_key  */
-/** @var string $qlgooglemaps_map id of igrame element  */
-/** @var string $qlgooglemaps_button  */
-/** @var string $qlgooglemaps_iframe  */
-/** @var string $infotext  */
+/** @var string $infotext */
+/** @var bool $infotextDisplay */
+/** @var string $qlgooglemaps_map id of igrame element */
+/** @var string $qlgooglemaps_button */
+/** @var string $qlgooglemaps_iframe */
 /** @var string $scripts_afterclickloaded */
-/** @var string $iframe_attributes */
-/** @var bool $infotextDisplay  */
-/** @var int $clicksolution  */
-/** @var int $eprivacyReadText  */
-/** @var bool $eprivacyReadTextDisplay  */
-/** @var bool $iframeButtonDisabled */
+/** @var string $pitatexts */
+/** @var string $unique */
+/** @var string $unique_key */
 
-$onclick = 'qlgooglemapsLoadIframe2ClickSolution(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\')';
+$onclick = 'qlgooglemapsLoadIframe3ClickSolution(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\')';
 $onclick = sprintf($onclick, $unique, $iframe_url, $iframe_attributes, $scripts_afterclickloaded, $confirmtext);
 ?>
 

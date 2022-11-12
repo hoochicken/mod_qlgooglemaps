@@ -9,42 +9,23 @@
 // no direct access
 defined('_JEXEC') or die;
 
-/** @var $params JRegistry */
-$iframe_url = $params->get('iframe_url', '');
-$iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attributes', '')));
-
-// if no url given, wie won't display anything :-)
-if (empty($iframe_url)) return;
-
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\WebAsset\WebAssetManager;
 
+/** @var $params JRegistry */
 /** @var $module stdClass */
+
 require_once dirname(__FILE__) . '/helper.php';
 $obj_helper = new modQlgooglemapsHelper($module, $params);
+$array = $obj_helper->initiateParams();
+extract($array);
 
-$confirmtext = $params->get('one_confirmtext', '');
-$eprivacyItemId = $params->get('eprivacyItemId', false);
-$eprivacylinkRoute = JRoute::_('index.php?Itemid=' . $eprivacyItemId);
+// if no url given, wie won't display anything :-)
+if (empty($iframe_url)) return;
 
-$clicksolution = (int) $params->get('clicksolution', 0);
-$confirmtext = $params->get('confirmtext', '');
-
-$eprivacyReadText = $params->get('eprivacyReadText', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT'));
-$eprivacyReadTextDisplay = !empty(strip_tags($eprivacyReadText));
-
-$scripts_afterclickloaded = $params->get('scripts_afterclickloaded', '');
-
-$infotext = $params->get('info', '');
-$infotextDisplay = !empty(strip_tags($infotext));
-
-$iframeButtonDisabled = $clicksolution >= 3;
-
-$unique = uniqid();
-$unique_key = 'qlgooglemaps_' . $unique;
+// add styles to DOM and scripts as well
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-// $wa->addInlineScript(sprintf('<script>let mapId = "%s"; let uniquefier = "%s"; let url = "%s"; let confirmtext = "%s"; </script>', $unique_key, $unique, $url, $confirmtext));
 $wa->registerStyle('mod_qlgooglemaps', 'mod_qlgooglemaps/styles.css');
 $wa->useStyle('mod_qlgooglemaps');
 $wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');

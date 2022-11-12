@@ -30,14 +30,8 @@ use Joomla\CMS\WebAsset\WebAssetManager;
 /** @var int $clicksolution  */
 /** @var string $scripts_afterclickloaded  */
 
-
 // custom scripts are only loaded directly
 if (!empty(trim($scripts_afterclickloaded))) $wa->registerScript('mod_qlgooglemaps', $scripts_afterclickloaded);
-
-
-
-$unique = uniqid();
-
 ?>
 <?php if ($infotextDisplay) : ?>
     <div class="info"><?php echo $infotext; ?></div>
