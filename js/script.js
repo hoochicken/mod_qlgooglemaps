@@ -69,6 +69,10 @@ function qlgooglemapsLoadIframe3ClickSolution(uniquefier, iframe_url, iframe_att
   // get id of iframe
   let iframeId = 'qlgooglemaps_iframe_' + uniquefier;
 
+  // disable button
+  let inputId = 'qlgooglemaps_readeprivacy_' + uniquefier;
+  document.getElementById(inputId).disabled = true;
+
   // remove iframe from iframe_holder
   if (!confirm(confirmtext)) {
     document.getElementById(iframeId).insertAdjacentHTML('beforeend', '');
@@ -98,6 +102,10 @@ function qlgooglemapsLoadIframe100ClickSolution(uniquefier, iframe_url, iframe_a
 {
   // get id of iframe
   let iframeId = 'qlgooglemaps_iframe_' + uniquefier;
+
+  // disable button
+  let inputId = 'qlgooglemaps_readeprivacy_' + uniquefier;
+  document.getElementById(inputId).disabled = true;
 
   // remove iframe from iframe_holder
   if (!confirm(confirmtext)) {
