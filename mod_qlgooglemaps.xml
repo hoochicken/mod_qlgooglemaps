@@ -64,6 +64,11 @@
 					<option value="3">MOD_QLGOOGLEMAPS_THREE</option>
 					<option value="100">MOD_QLGOOGLEMAPS_PITA</option>
 				</field>
+				<field
+						name="image"
+						type="media"
+						label="MOD_QLGOOGLEMAPS_IMAGE_LABEL"
+						description="MOD_QLGOOGLEMAPS_IMAGE_DESC" />
 			</fieldset>
 			<fieldset name="texts">
 				<field
@@ -73,28 +78,28 @@
 						label="MOD_QLGOOGLEMAPS_INFO_LABEL"
 						description="MOD_QLGOOGLEMAPS_INFO_DESC"
 				/>
-				<field name="spacereprivacybutton" type="spacer" label="MOD_QLGOOGLEMAPS_SPACEREPRIVACYBUTTON_LABEL" />
+				<field name="spacerprivacybutton" type="spacer" label="MOD_QLGOOGLEMAPS_SPACERPRIVACYBUTTON_LABEL" />
 				<field
-						name="eprivacybutton"
+						name="privacybutton"
 						type="radio"
 						class="btn-group btn-group-yesno"
-						label="MOD_QLGOOGLEMAPS_EPRIVACYBUTTON_LABEL"
-						description="MOD_QLGOOGLEMAPS_EPRIVACYBUTTON_DESC"
+						label="MOD_QLGOOGLEMAPS_PRIVACYBUTTON_LABEL"
+						description="MOD_QLGOOGLEMAPS_PRIVACYBUTTON_DESC"
 						default="1">
 					<option value="1">JYES</option>
 					<option value="0">JNO</option>
 				</field>
 				<field
-						name="eprivacybuttonlabel"
+						name="privacybuttonlabel"
 						type="text"
-						label="MOD_QLGOOGLEMAPS_EPRIVACYBUTTONLABEL_LABEL"
-						description="MOD_QLGOOGLEMAPS_EPRIVACYBUTTONLABEL_DESC"
+						label="MOD_QLGOOGLEMAPS_PRIVACYBUTTONLABEL_LABEL"
+						description="MOD_QLGOOGLEMAPS_PRIVACYBUTTONLABEL_DESC"
 				/>
 				<field
-						name="eprivacyItemId"
+						name="privacyItemId"
 						type="menuitem"
-						label="MOD_QLGOOGLEMAPS_EPRIVACYLINK_LABEL"
-						description="MOD_QLGOOGLEMAPS_EPRIVACYLINK_DESC"
+						label="MOD_QLGOOGLEMAPS_PRIVACYLINK_LABEL"
+						description="MOD_QLGOOGLEMAPS_PRIVACYLINK_DESC"
 				/>
 				<field name="spaceradditionalscripts" type="spacer" label="MOD_QLGOOGLEMAPS_SPACERADDITIONALSCRIPTS_LABEL" />
 				<field
@@ -123,11 +128,11 @@
             </fieldset>
 			<fieldset name="three">
 				<field
-						name="eprivacyReadText"
+						name="privacyReadText"
 						type="editor"
 						filter="safehtml"
-						label="MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT_LABEL"
-						description="MOD_QLGOOGLEMAPS_EPRIVACYREADTEXT_DESC"
+						label="MOD_QLGOOGLEMAPS_PRIVACYREADTEXT_LABEL"
+						description="MOD_QLGOOGLEMAPS_PRIVACYREADTEXT_DESC"
 				/>
             </fieldset>
 			<fieldset name="pita">

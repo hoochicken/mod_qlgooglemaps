@@ -21,6 +21,7 @@ function qlgooglemapsLoadIframe1ClickSolution(uniquefier, iframe_url, iframe_att
   // some scripte need to be loaded aditionally to iframe
   // e. g. vimeo needs this whyever
   qlgooglemapsAddScriptToDoms(scripts_afterclickloaded);
+  qlgooglemapsHideImagebutton(uniquefier);
 
   // build iframe html, actually add the html of the iframe
   let htmlIframe = qlgooglemapsGetIframeHtml(iframe_url, iframe_attributes);
@@ -48,6 +49,7 @@ function qlgooglemapsLoadIframe2ClickSolution(uniquefier, iframe_url, iframe_att
   // some scripte need to be loaded aditionally to iframe
   // e. g. vimeo needs this whyever
   qlgooglemapsAddScriptToDoms(scripts_afterclickloaded);
+  qlgooglemapsHideImagebutton(uniquefier);
 
   // build iframe html, actually add the html of the iframe
   let htmlIframe = qlgooglemapsGetIframeHtml(iframe_url, iframe_attributes);
@@ -70,7 +72,7 @@ function qlgooglemapsLoadIframe3ClickSolution(uniquefier, iframe_url, iframe_att
   let iframeId = 'qlgooglemaps_iframe_' + uniquefier;
 
   // disable button
-  let inputId = 'qlgooglemaps_readeprivacy_' + uniquefier;
+  let inputId = 'qlgooglemaps_readprivacy_' + uniquefier;
   document.getElementById(inputId).disabled = true;
 
   // remove iframe from iframe_holder
@@ -82,6 +84,7 @@ function qlgooglemapsLoadIframe3ClickSolution(uniquefier, iframe_url, iframe_att
   // some scripte need to be loaded aditionally to iframe
   // e. g. vimeo needs this whyever
   qlgooglemapsAddScriptToDoms(scripts_afterclickloaded);
+  qlgooglemapsHideImagebutton(uniquefier);
 
   // build iframe html, actually add the html of the iframe
   let htmlIframe = qlgooglemapsGetIframeHtml(iframe_url, iframe_attributes);
@@ -104,7 +107,7 @@ function qlgooglemapsLoadIframe100ClickSolution(uniquefier, iframe_url, iframe_a
   let iframeId = 'qlgooglemaps_iframe_' + uniquefier;
 
   // disable button
-  let inputId = 'qlgooglemaps_readeprivacy_' + uniquefier;
+  let inputId = 'qlgooglemaps_readprivacy_' + uniquefier;
   document.getElementById(inputId).disabled = true;
 
   // remove iframe from iframe_holder
@@ -128,6 +131,7 @@ function qlgooglemapsLoadIframe100ClickSolution(uniquefier, iframe_url, iframe_a
   // some scripte need to be loaded aditionally to iframe
   // e. g. vimeo needs this whyever
   qlgooglemapsAddScriptToDoms(scripts_afterclickloaded);
+  qlgooglemapsHideImagebutton(uniquefier);
 
   // build iframe html, actually add the html of the iframe
   let htmlIframe = qlgooglemapsGetIframeHtml(iframe_url, iframe_attributes);
@@ -151,23 +155,33 @@ function qlgooglemapsAddScriptToDoms(scripts_afterclickloaded) {
 }
 
 /**
- * checks whether eprivacy is read
+ * checks whether privacy is read
  * removes button property 'disabled' from "Display map"-button
  * @param uniquefier
  * @returns {boolean}
  */
 function qlgooglemapsEnableButton(uniquefier) {
-  let inputId = 'qlgooglemaps_readeprivacy_' + uniquefier;
+  let inputId = 'qlgooglemaps_readprivacy_' + uniquefier;
   let buttonId = 'qlgooglemaps_button_' + uniquefier;
+  let imageButtonId = 'qlgooglemaps_button_image_' + uniquefier;
+
   if (!document.getElementById(inputId).checked) {
-    document.getElementById(buttonId).disabled = true;
+    if (null !== document.getElementById(buttonId)) document.getElementById(buttonId).disabled = true;
+    if (null !== document.getElementById(imageButtonId)){
+      document.getElementById(imageButtonId).style.display = 'none';
+      document.getElementById(imageButtonId).disabled = true;
+    }
     return false;
   }
-  document.getElementById(buttonId).disabled = false;
+  if (null !== document.getElementById(buttonId)) document.getElementById(buttonId).disabled = false;
+  if (null !== document.getElementById(imageButtonId)) {
+    document.getElementById(imageButtonId).style.display = 'block';
+    document.getElementById(imageButtonId).disabled = false;
+  }
 }
 
 /**
- * checks whether eprivacy is read
+ * checks whether privacy is read
  * removes button property 'disabled' from "Display map"-button
  * @returns {boolean}
  * @param iframe_url
@@ -179,4 +193,17 @@ function qlgooglemapsGetIframeHtml(iframe_url, iframe_attributes) {
   htmlIframe = htmlIframe.replace("IFRAME_URL", iframe_url);
   htmlIframe = htmlIframe.replace("IFRAME_ATTRIBUTES", iframe_attributes);
   return htmlIframe;
+}
+
+/**
+ * checks whether privacy is read
+ * removes button property 'disabled' from "Display map"-button
+ * @param uniquefier
+ * @returns {boolean}
+ */
+function qlgooglemapsHideImagebutton(uniquefier)
+{
+  let imageButtonId = 'qlgooglemaps_button_image_' + uniquefier;
+  if ('undefined' === typeof document.getElementById(imageButtonId)) return;
+  document.getElementById(imageButtonId).style.display = 'none';
 }

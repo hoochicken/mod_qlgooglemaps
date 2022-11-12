@@ -35,14 +35,16 @@ class modQlgooglemapsHelper
 
         $clicksolution = (int) $params->get('clicksolution', 0);
         $confirmtext = $this->getTextByParamOrLanguageOverride('confirmtext', Text::_('MOD_QLGOOGLEMAPS_CONFIRMTEXTDEFAULT'));
-        $eprivacybutton = (bool) $params->get('eprivacybutton', false);
-        $eprivacybuttonlabel = $params->get('eprivacybuttonlabel', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYBUTTON'));
-        $eprivacyItemId = $params->get('eprivacyItemId', false);
-        $eprivacylinkRoute = JRoute::_('index.php?Itemid=' . $eprivacyItemId);
-        $eprivacyReadText = $this->getTextByParamOrLanguageOverride('eprivacyReadText', Text::_('MOD_QLGOOGLEMAPS_EPRIVACYREADTEXTDEFAULT'));
-        $eprivacyReadTextDisplay = !empty(strip_tags($eprivacyReadText));
+        $privacybutton = (bool) $params->get('privacybutton', false);
+        $privacybuttonlabel = $params->get('privacybuttonlabel', Text::_('MOD_QLGOOGLEMAPS_PRIVACYBUTTON'));
+        $privacyItemId = $params->get('privacyItemId', false);
+        $privacylinkRoute = JRoute::_('index.php?Itemid=' . $privacyItemId);
+        $privacyReadText = $this->getTextByParamOrLanguageOverride('privacyReadText', Text::_('MOD_QLGOOGLEMAPS_PRIVACYREADTEXTDEFAULT'));
+        $privacyReadTextDisplay = !empty(strip_tags($privacyReadText));
         $iframe_url = $params->get('iframe_url', '');
         $iframe_attributes = str_replace('"', '\'', addslashes($params->get('iframe_attributes', '')));
+        $image = $params->get('image', '');
+        $imageSrcAttribute = sprintf('src="%s"', $image);
         $infotext = $params->get('info', '');
         $infotextDisplay = !empty(strip_tags($infotext));
         $iframebuttonlabel = $this->getTextByParamOrLanguageOverride('iframebuttonlabel', Text::_('MOD_QLGOOGLEMAPS_IFRAMEBUTTONLABELDEFAULT'));
@@ -55,14 +57,16 @@ class modQlgooglemapsHelper
         return [
             'clicksolution' => $clicksolution,
             'confirmtext' => $confirmtext,
-            'eprivacybutton' => $eprivacybutton,
-            'eprivacybuttonlabel' => $eprivacybuttonlabel,
-            'eprivacyItemId' => $eprivacyItemId,
-            'eprivacylinkRoute' => $eprivacylinkRoute,
-            'eprivacyReadText' => $eprivacyReadText,
-            'eprivacyReadTextDisplay' => $eprivacyReadTextDisplay,
+            'privacybutton' => $privacybutton,
+            'privacybuttonlabel' => $privacybuttonlabel,
+            'privacyItemId' => $privacyItemId,
+            'privacylinkRoute' => $privacylinkRoute,
+            'privacyReadText' => $privacyReadText,
+            'privacyReadTextDisplay' => $privacyReadTextDisplay,
             'iframe_url' => $iframe_url,
             'iframe_attributes' => $iframe_attributes,
+            'image' => $image,
+            'imageSrcAttribute' => $imageSrcAttribute,
             'infotext' => $infotext,
             'infotextDisplay' => $infotextDisplay,
             'iframebuttonDisabled' => $iframebuttonDisabled,
