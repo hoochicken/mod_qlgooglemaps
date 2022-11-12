@@ -13,7 +13,7 @@
 	<version>1.0.0</version>
 	<description>MOD_QLGOOGLEMAPS_XML_DESCRIPTION</description>
 	<updateservers>
-		<server type="extension" priority="1" name="qlgooglemaps - Updates">https://github.com/hoochicken/mod_qlgooglemaps/archive/refs/tags/v1.0.0.zip</server>
+		<server type="extension" priority="1" name="qlgooglemaps - Updates">https://raw.githubusercontent.com/hoochicken/mod_qlgooglemaps/main/_jupdate/mod_qlform.xml</server>
     </updateservers>
 	<files>
 		<filename module="mod_qlgooglemaps">mod_qlgooglemaps.php</filename>
