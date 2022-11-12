@@ -25,10 +25,6 @@ extract($array);
 if (empty($iframe_url)) return;
 
 // add styles to DOM and scripts as well
-$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
-$wa->registerStyle('mod_qlgooglemaps', 'mod_qlgooglemaps/styles.css');
-$wa->useStyle('mod_qlgooglemaps');
-$wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');
-$wa->useScript('mod_qlgooglemaps');
+$obj_helper->addStylesAndScripts(Factory::getApplication()->getDocument()->getWebAssetManager());
 
 require JModuleHelper::getLayoutPath('mod_qlgooglemaps', $params->get('layout', 'default'));

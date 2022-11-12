@@ -8,6 +8,7 @@
 
 // no direct access
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\WebAsset\WebAssetManager;
 
 defined('_JEXEC') or die;
 
@@ -78,5 +79,17 @@ class modQlgooglemapsHelper
         $valueLanguage = Text::_($keyLanguage);
         if ($keyLanguage !== $valueLanguage) $value = $valueLanguage;
         return $value;
+    }
+
+    /**
+     * @param WebAssetManager $wa
+     */
+    public function addStylesAndScripts($wa)
+    {
+        $wa->registerStyle('mod_qlgooglemaps', 'mod_qlgooglemaps/styles.css');
+        $wa->useStyle('mod_qlgooglemaps');
+        $wa->registerScript('mod_qlgooglemaps', 'mod_qlgooglemaps/script.js');
+        $wa->useScript('mod_qlgooglemaps');
+
     }
 }
